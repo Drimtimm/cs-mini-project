@@ -1,2 +1,2 @@
-# cs-mini-project
-school. uhhghh idk
+# GamyLearn
+Gamifying learning since 2025.

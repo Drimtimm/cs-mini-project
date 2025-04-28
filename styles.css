@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Jersey 15', sans-serif;
+}
+
+nav {
+    background-color: #ffd3e3;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+li {
+    display: inline;
+    margin: 20px;
+    font-size: 26px;
+}
+
+#hero {
+    background-color: #ffb9c5;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+#hero-content {
+    width: 50%;
+}
+
+#hero-content p {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 40px;
+    padding-bottom: 20px;
+}
+
+#hero img {
+    width: 400px;
+    height: 400px;
+    animation: vertical 5s infinite;
+}
+
+@keyframes vertical {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#hero-content button {
+    color: #75d3dc;
+    background-color: #c4f7f5;
+    padding: 15px 40px 15px 40px;
+    margin: 10px;
+    font-size: 14px;
+    font-family: "Press Start 2P", system-ui;
+    border: 0;
+    box-shadow: 0px 5px #75d3dc, 0px -5px #75d3dc, 5px 0px #75d3dc, -5px 0px #75d3dc, 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff36;
+    cursor: pointer;
+}
+
+#hero-content button:active {
+    transform: translateY(5px);
+    box-shadow: 0px 5px #75d3dc, 0px -5px #75d3dc, 5px 0px #75d3dc, -5px 0px #75d3dc;
+}

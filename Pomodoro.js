@@ -39,3 +39,16 @@
             document.getElementById('timer').textContent = 
                 `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
+
+                // Highlight Pomodoro menu item
+        document.querySelector('.menu-button[data-menu="pomodoro"]').classList.add('active');
+        
+        // Handle menu clicks
+        document.querySelectorAll('.menu-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const menuType = this.getAttribute('data-menu');
+                if(menuType !== 'pomodoro') {
+                    window.location.href = menuType === 'dashboard' ? 'index.html' : `${menuType}.html`;
+                }
+            });
+        });

@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             // Remove active class from all menu buttons
             menuButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
+            /
+            / Add active class to clicked button
             this.classList.add('active');
             
             // You can add functionality to show different content
@@ -179,8 +180,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         showNotification('Welcome back, Player_1!');
     }, 1000);
-
-    // Add this to your existing script.js file
 
 // Diamond counter and gift system
 let diamonds = localStorage.getItem('diamonds') ? parseInt(localStorage.getItem('diamonds')) : 0;

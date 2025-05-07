@@ -179,4 +179,185 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         showNotification('Welcome back, Player_1!');
     }, 1000);
+
+    /* Add this to your existing styles.css file */
+
+/* Diamond Counter */
+.diamond-counter {
+    display: flex;
+    align-items: center;
+    background-color: #2d3748;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-right: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.diamond-icon {
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+.diamond-count {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Gift Button Styles */
+.gift-button {
+    position: relative;
+    transition: all 0.3s;
+}
+
+.gift-button.available {
+    animation: pulse 1.5s infinite;
+}
+
+.gift-button.available::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 12px;
+    height: 12px;
+    background-color: #ff4757;
+    border-radius: 50%;
+    border: 2px solid #2d3748;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Gift Popup */
+.gift-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.gift-popup {
+    background-color: #1a202c;
+    width: 320px;
+    padding: 20px;
+    border: 4px solid #ffffff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.gift-popup.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.gift-popup.claimed {
+    transform: scale(1.2);
+    opacity: 0;
+}
+
+.gift-popup-header h2 {
+    color: #ffd700;
+    font-family: 'Share Tech Mono', monospace;
+    margin-top: 0;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.claim-button, .close-button {
+    background-color: #5eead4;
+    color: #1a202c;
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+}
+
+.claim-button:hover, .close-button:hover {
+    background-color: #2dd4bf;
+    transform: translateY(-2px);
+}
+
+.close-button {
+    background-color: #6b7280;
+}
+
+.close-button:hover {
+    background-color: #4b5563;
+}
+
+.gift-popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.gift-message {
+    color: #ffffff;
+    font-family: 'Share Tech Mono', monospace;
+    margin-bottom: 10px;
+}
+
+.gift-countdown {
+    color: #f8e71c;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+}
+
+.gift-box-large {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.gift-reward {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.diamond-icon.large {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.diamond-amount {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 24px;
+    font-weight: bold;
+    color: #5eead4;
+}
+
+.gift-animation {
+    animation: bounce 2s infinite;
 });

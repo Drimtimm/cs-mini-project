@@ -1,0 +1,214 @@
+/* Add to pomodoro.css */
+.header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.search-bar-container {
+    flex-grow: 0.1;
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 2rem;
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 400px;
+}
+
+.user-section {
+    flex-shrink: 0;
+}
+
+/* Pomodoro-specific styles matching game aesthetic */
+.pomodoro-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #e0f7ff; /* cyan-100 */
+    border-radius: 0.5rem;
+}
+
+.header a:hover .logo {
+    transform: translateY(-1px);
+    text-shadow: 3px 3px 0 #88CCDD;
+    transition: all 0.2s ease;
+}
+
+.pomodoro-timer {
+    font-size: 3rem;
+    color: #0c4a6e; /* cyan-800 */
+    text-align: center;
+    margin: 2rem 0;
+    font-family: 'Share Tech Mono', monospace;
+    text-shadow: 2px 2px 0 #88CCDD;
+}
+
+.pomodoro-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.pomodoro-button {
+    background: #f472b6; /* pink-400 */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    font-family: 'Share Tech Mono', monospace;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.pomodoro-button.secondary {
+    background: #67e8f9; /* cyan-300 */
+    color: #0c4a6e; /* cyan-800 */
+}
+
+.pomodoro-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1);
+}
+
+.pomodoro-button:active {
+    transform: translateY(0);
+}
+
+/* Pixel border adaptation */
+.pomodoro-pixel-border {
+    position: relative;
+    padding: 0.25rem;
+}
+
+.pomodoro-pixel-border::before,
+.pomodoro-pixel-border::after,
+.pomodoro-pixel-border > *::before,
+.pomodoro-pixel-border > *::after {
+    content: '';
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: #f9a8d4; /* pink-300 */
+}
+
+.pomodoro-pixel-border::before { top: 0; left: 0; }
+.pomodoro-pixel-border::after { top: 0; right: 0; }
+.pomodoro-pixel-border > *::before { bottom: 0; left: 0; }
+.pomodoro-pixel-border > *::after { bottom: 0; right: 0; }
+
+.pomodoro-pixel-border > * {
+    border: 2px dashed #f9a8d4; /* pink-300 */
+    padding: 1.5rem;
+    position: relative;
+}
+
+/* Pomodoro Layout */
+.pomodoro-layout {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.side-panel {
+    width: 220px;
+    padding: 1rem;
+    background-color: #e0f7ff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.panel-title {
+    color: #0c4a6e;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    border-bottom: 2px dashed #f9a8d4;
+    padding-bottom: 0.5rem;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.stat-label {
+    color: #0891b2;
+    font-weight: bold;
+}
+
+.stat-value {
+    color: #0c4a6e;
+}
+
+.powerup-button {
+    background: #a5f3fc;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.powerup-button:hover {
+    background: #67e8f9;
+    transform: translateY(-2px);
+}
+
+.powerup-icon {
+    font-size: 1.2rem;
+}
+
+.powerup-name {
+    color: #0c4a6e;
+    font-size: 0.9rem;
+}
+
+.powerup-cooldown {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 2px dashed #f9a8d4;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.cooldown-text {
+    color: #0891b2;
+}
+
+.cooldown-timer {
+    color: #ec4899;
+    font-weight: bold;
+    display: block;
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pomodoro-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .side-panel {
+        width: 100%;
+        max-width: 400px;
+    }
+}

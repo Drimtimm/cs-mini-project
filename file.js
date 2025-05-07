@@ -180,184 +180,161 @@ document.addEventListener('DOMContentLoaded', function() {
         showNotification('Welcome back, Player_1!');
     }, 1000);
 
-    /* Add this to your existing styles.css file */
+    // Add this to your existing script.js file
 
-/* Diamond Counter */
-.diamond-counter {
-    display: flex;
-    align-items: center;
-    background-color: #2d3748;
-    padding: 6px 12px;
-    border-radius: 20px;
-    margin-right: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// Diamond counter and gift system
+let diamonds = localStorage.getItem('diamonds') ? parseInt(localStorage.getItem('diamonds')) : 0;
+let lastGiftDate = localStorage.getItem('lastGiftDate') || null;
+
+// Create diamond counter UI
+function createDiamondCounter() {
+    const diamondCounter = document.createElement('div');
+    diamondCounter.className = 'diamond-counter pixel-border';
+    diamondCounter.innerHTML = `
+        <div class="diamond-icon">💎</div>
+        <div class="diamond-count">${diamonds}</div>
+    `;
+    
+    // Add to the header
+    const userSection = document.querySelector('.user-section');
+    userSection.insertBefore(diamondCounter, userSection.firstChild);
 }
 
-.diamond-icon {
-    font-size: 16px;
-    margin-right: 6px;
+// Create gift popup
+function createGiftPopup() {
+    // Create modal overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'gift-overlay';
+    
+    // Create popup
+    const popup = document.createElement('div');
+    popup.className = 'gift-popup pixel-border';
+    
+    // Random diamond amount (5-20)
+    const diamondAmount = Math.floor(Math.random() * 16) + 5;
+    
+    popup.innerHTML = `
+        <div class="gift-popup-header">
+            <h2>DAILY REWARD!</h2>
+        </div>
+        <div class="gift-popup-content">
+            <div class="gift-box-large">
+                <div class="gift-animation">🎁</div>
+            </div>
+            <div class="gift-reward">
+                <div class="diamond-icon large">💎</div>
+                <div class="diamond-amount">+${diamondAmount}</div>
+            </div>
+        </div>
+        <button class="claim-button">CLAIM REWARD</button>
+    `;
+    
+    overlay.appendChild(popup);
+    document.body.appendChild(overlay);
+    
+    // Add event listener to claim button
+    const claimButton = popup.querySelector('.claim-button');
+    claimButton.addEventListener('click', () => {
+        // Add diamonds
+        diamonds += diamondAmount;
+        localStorage.setItem('diamonds', diamonds);
+        
+        // Update diamond counter
+        updateDiamondCount();
+        
+        // Set last gift date to today
+        const today = new Date().toISOString().split('T')[0];
+        localStorage.setItem('lastGiftDate', today);
+        
+        // Close popup with animation
+        popup.classList.add('claimed');
+        setTimeout(() => {
+            document.body.removeChild(overlay);
+        }, 600);
+    });
+    
+    // Add animation class after a short delay to trigger animation
+    setTimeout(() => {
+        popup.classList.add('active');
+    }, 10);
 }
 
-.diamond-count {
-    font-family: 'Share Tech Mono', monospace;
-    font-weight: bold;
-    color: #fff;
-}
-
-/* Gift Button Styles */
-.gift-button {
-    position: relative;
-    transition: all 0.3s;
-}
-
-.gift-button.available {
-    animation: pulse 1.5s infinite;
-}
-
-.gift-button.available::after {
-    content: '';
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    width: 12px;
-    height: 12px;
-    background-color: #ff4757;
-    border-radius: 50%;
-    border: 2px solid #2d3748;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
+// Update the diamond count display
+function updateDiamondCount() {
+    const diamondCountElement = document.querySelector('.diamond-count');
+    if (diamondCountElement) {
+        diamondCountElement.textContent = diamonds;
     }
-    50% {
-        transform: scale(1.05);
+}
+
+// Set up gift button click handler
+function setupGiftButton() {
+    const giftButton = document.querySelector('.gift-button');
+    if (giftButton) {
+        const today = new Date().toISOString().split('T')[0];
+        
+        // If user hasn't claimed gift today
+        if (lastGiftDate !== today) {
+            giftButton.classList.add('available');
+        }
+        
+        // Add click event to gift button - always allow clicking, but check if reward can be claimed
+        giftButton.addEventListener('click', () => {
+            const today = new Date().toISOString().split('T')[0];
+            
+            if (lastGiftDate !== today) {
+                // User can claim gift today
+                createGiftPopup();
+            } else {
+                // User already claimed today
+                createAlreadyClaimedPopup();
+            }
+        });
     }
-    100% {
-        transform: scale(1);
-    }
 }
 
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+// Create "already claimed" popup
+function createAlreadyClaimedPopup() {
+    // Create modal overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'gift-overlay';
+    
+    // Create popup
+    const popup = document.createElement('div');
+    popup.className = 'gift-popup pixel-border';
+    
+    popup.innerHTML = `
+        <div class="gift-popup-header">
+            <h2>ALREADY CLAIMED</h2>
+        </div>
+        <div class="gift-popup-content">
+            <div class="gift-message">You've already claimed your daily reward today!</div>
+            <div class="gift-countdown">Come back tomorrow for more diamonds!</div>
+        </div>
+        <button class="close-button">CLOSE</button>
+    `;
+    
+    overlay.appendChild(popup);
+    document.body.appendChild(overlay);
+    
+    // Add event listener to close button
+    const closeButton = popup.querySelector('.close-button');
+    closeButton.addEventListener('click', () => {
+        document.body.removeChild(overlay);
+    });
+    
+    // Add animation class after a short delay to trigger animation
+    setTimeout(() => {
+        popup.classList.add('active');
+    }, 10);
 }
 
-/* Gift Popup */
-.gift-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+// Initialize diamond system
+function initDiamondSystem() {
+    createDiamondCounter();
+    setupGiftButton();
 }
 
-.gift-popup {
-    background-color: #1a202c;
-    width: 320px;
-    padding: 20px;
-    border: 4px solid #ffffff;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    transform: scale(0.8);
-    opacity: 0;
-    transition: all 0.3s;
-    text-align: center;
-}
-
-.gift-popup.active {
-    transform: scale(1);
-    opacity: 1;
-}
-
-.gift-popup.claimed {
-    transform: scale(1.2);
-    opacity: 0;
-}
-
-.gift-popup-header h2 {
-    color: #ffd700;
-    font-family: 'Share Tech Mono', monospace;
-    margin-top: 0;
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-}
-
-.claim-button, .close-button {
-    background-color: #5eead4;
-    color: #1a202c;
-    border: none;
-    padding: 10px 20px;
-    font-family: 'Share Tech Mono', monospace;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s;
-    border: 2px solid transparent;
-}
-
-.claim-button:hover, .close-button:hover {
-    background-color: #2dd4bf;
-    transform: translateY(-2px);
-}
-
-.close-button {
-    background-color: #6b7280;
-}
-
-.close-button:hover {
-    background-color: #4b5563;
-}
-
-.gift-popup-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.gift-message {
-    color: #ffffff;
-    font-family: 'Share Tech Mono', monospace;
-    margin-bottom: 10px;
-}
-
-.gift-countdown {
-    color: #f8e71c;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 14px;
-}
-
-.gift-box-large {
-    font-size: 64px;
-    margin-bottom: 20px;
-}
-
-.gift-reward {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.diamond-icon.large {
-    font-size: 30px;
-    margin-right: 10px;
-}
-
-.diamond-amount {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 24px;
-    font-weight: bold;
-    color: #5eead4;
-}
-
-.gift-animation {
-    animation: bounce 2s infinite;
+// Run when DOM is loaded
+document.addEventListener('DOMContentLoaded', initDiamondSystem);
 });

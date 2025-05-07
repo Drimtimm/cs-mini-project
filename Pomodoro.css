@@ -32,6 +32,63 @@
     border-radius: 0.5rem;
 }
 
+/* Add/Update these styles in pomodoro.css */
+.main-content {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    min-height: calc(100vh - 180px); /* Adjust based on header height */
+}
+
+/* Add to pomodoro.css */
+.content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    min-height: calc(100vh - 200px);
+}
+
+.pomodoro-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #e0f7ff;
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+.pomodoro-timer {
+    font-size: 4rem !important;
+    margin: 1rem 0;
+    line-height: 1.2;
+}
+
+.pomodoro-controls {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 1.5rem 0;
+}
+
+.pomodoro-controls:last-child {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Add media query */
+@media (max-width: 768px) {
+    .pomodoro-controls {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .pomodoro-timer {
+        font-size: 3rem !important;
+    }
+}
+
 .header a:hover .logo {
     transform: translateY(-1px);
     text-shadow: 3px 3px 0 #88CCDD;
@@ -112,6 +169,7 @@
 
 /* Pomodoro Layout */
 .pomodoro-layout {
+    
     display: flex;
     gap: 1.5rem;
     justify-content: center;

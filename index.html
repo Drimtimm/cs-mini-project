@@ -1,31 +1,388 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>GamyLearn</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamy Learn - Pixel Study App</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <ul>
-            <div>
-                <li>GamyLearn</li>
+    <div class="bg-cyan-400 main-container">
+        <!-- Main Container -->
+        <div class="bg-cyan-100 app-container">
+            
+            <!-- Header -->
+            <div class="header">
+                <div class="logo-container">
+                    <div class="logo">GAMY LEARN</div>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <input placeholder="Courses, books, teachers..." />
+                </div>
+                
+                <!-- User Section -->
+                <div class="user-section">
+                    <svg class="bell-icon" viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <div class="user-profile">
+                        <div class="avatar-container">
+                            <div class="avatar"></div>
+                        </div>
+                        <span class="username">Player_1</span>
+                        <svg class="chevron-icon" viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                </div>
             </div>
-            <div>
-                <li>Home</li>
-                <li>To-Do</li>
-                <li>Pomodoro</li>
-                <li>Stats</li>
-            </div>
-        </ul>
-    </nav>
-    <section id="hero">
-        <div id="hero-content">
-            <p>Unlock your potential, one study session at a time.</p>
-            <button>Start now!</button>
-        </div>
+            
+            <!-- Sidebar and Content -->
+            <div class="main-content">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <div class="pixel-border user-profile-card">
+                        <div class="profile-content">
+                            <div class="profile-avatar">
+                                <div class="profile-avatar-inner"></div>
+                            </div>
+                            <span class="profile-name">Player_1</span>
+                            <div class="profile-level">LVL 42</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Menu -->
+                    <div class="pixel-border menu-container">
+                        <div class="menu">
+                            <button class="menu-button active" data-menu="dashboard">
+                                <span>📊</span>
+                                <span class="menu-label">Dashboard</span>
+                            </button>
+                            <button class="menu-button" data-menu="courses">
+                                <span>📚</span>
+                                <span class="menu-label">Courses</span>
+                            </button>
+                            <button class="menu-button" data-menu="homeworks">
+                                <span>📝</span>
+                                <span class="menu-label">Homeworks</span>
+                            </button>
+                            <button class="menu-button" data-menu="exams">
+                                <span>📋</span>
+                                <span class="menu-label">Exams</span>
+                            </button>
+                            <button class="menu-button" data-menu="statistics">
+                                <span>📈</span>
+                                <span class="menu-label">Statistics</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Gift Box -->
+                    <div class="gift-box">
+                        <button class="gift-button">
+                            <svg class="gift-icon" viewBox="0 0 24 24" width="18" height="18">
+                                <path d="M20 12v10H4V12M22 7H2v5h20V7zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <span class="gift-text">Daily Reward</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Main Content Area -->
+                <div class="content-area">
+                    <!-- Stats Row -->
+                    <div class="stats-row">
+                        <!-- GPA -->
+                        <div class="pixel-border">
+                            <div class="stat-card gpa-card">
+                                <div class="gpa-value">A+</div>
+                                <div class="gpa-label">CURRENT GPA</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
 
-        <!-- placeholder -->
-        <img src="https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?semt=ais_hybrid&w=740">
-    </section>
+                        <!-- Progress -->
+                        <div class="pixel-border">
+                            <div class="stat-card progress-card">
+                                <div class="progress-item">
+                                    <span class="progress-label">QUESTS</span>
+                                    <span class="progress-value">75/100</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span class="progress-label">BOSSES</span>
+                                    <span class="progress-value">5/10</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grade Distribution -->
+                        <div class="pixel-border">
+                            <div class="stat-card achievements-card">
+                                <div class="achievements-label">ACHIEVEMENTS</div>
+                                <div class="achievement-bars">
+                                    <div class="achievement-bar">
+                                        <div class="bar-fill" style="height: 75%"></div>
+                                        <div class="bar-label">S</div>
+                                    </div>
+                                    <div class="achievement-bar">
+                                        <div class="bar-fill" style="height: 40%"></div>
+                                        <div class="bar-label">A</div>
+                                    </div>
+                                    <div class="achievement-bar">
+                                        <div class="bar-fill" style="height: 60%"></div>
+                                        <div class="bar-label">B</div>
+                                    </div>
+                                    <div class="achievement-bar">
+                                        <div class="bar-fill" style="height: 25%"></div>
+                                        <div class="bar-label">C</div>
+                                    </div>
+                                    <div class="achievement-bar">
+                                        <div class="bar-fill" style="height: 10%"></div>
+                                        <div class="bar-label">F</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Subscription Banner -->
+                    <div class="pixel-border subscription-container">
+                        <div class="subscription-banner">
+                            <div class="subscription-content">
+                                <div class="subscription-title">PREMIUM UPGRADE</div>
+                                <div class="subscription-text">Unlock all quests and special items!</div>
+                            </div>
+                            <button class="subscription-button">-20% NOW!</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Courses Section -->
+                    <div class="courses-section">
+                        <div class="section-header">
+                            <div class="header-left">
+                                <h2 class="section-title">ACTIVE QUESTS</h2>
+                                <div class="status-badge">IN PROGRESS</div>
+                            </div>
+                            <div class="header-right">
+                                <button class="view-all-button">ALL QUESTS</button>
+                                <div class="pagination-controls">
+                                    <button class="pagination-button prev">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="pagination-button next">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course Cards -->
+                        <div class="course-cards">
+                            <div class="course-card">
+                                <div class="course-header bg-blue-100">
+                                    <div class="course-icon">🎮</div>
+                                    <div class="course-info">
+                                        <h3 class="course-title">Pixel Art Fundamentals</h3>
+                                        <div class="course-meta">
+                                            <div class="instructor">
+                                                <div class="instructor-avatar"></div>
+                                                <span class="instructor-name">Oliver_64</span>
+                                            </div>
+                                            <div class="course-grade">GPA: A+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="course-footer">
+                                    <div class="course-stats">
+                                        <div class="stats-column">
+                                            <div class="stat">Quests: 7/10</div>
+                                            <div class="stat">Last score: A+</div>
+                                        </div>
+                                        <div class="stats-column">
+                                            <div class="stat">Tasks: 8/12</div>
+                                            <div class="stat">XP: +25</div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card">
+                                <div class="course-header bg-pink-100">
+                                    <div class="course-icon">👾</div>
+                                    <div class="course-info">
+                                        <h3 class="course-title">Game Development 101</h3>
+                                        <div class="course-meta">
+                                            <div class="instructor">
+                                                <div class="instructor-avatar"></div>
+                                                <span class="instructor-name">Jane_8bit</span>
+                                            </div>
+                                            <div class="course-grade">GPA: B</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="course-footer">
+                                    <div class="course-stats">
+                                        <div class="stats-column">
+                                            <div class="stat">Quests: 5/10</div>
+                                            <div class="stat">Last score: B</div>
+                                        </div>
+                                        <div class="stats-column">
+                                            <div class="stat">Tasks: 4/8</div>
+                                            <div class="stat">XP: +15</div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Exams/Homeworks Tabs -->
+                    <div class="tabs-section">
+                        <div class="tabs-header">
+                            <button class="tab-button active" data-tab="exams">BOSS BATTLES</button>
+                            <button class="tab-button" data-tab="homeworks">DAILY QUESTS</button>
+                        </div>
+                        
+                        <!-- Exam List -->
+                        <div class="tab-content" id="exams-content">
+                            <div class="exam-item">
+                                <div class="exam-date">
+                                    <div class="exam-day">10</div>
+                                    <div class="exam-month">AUG</div>
+                                </div>
+                                
+                                <div class="exam-info">
+                                    <div class="exam-details">
+                                        <h3 class="exam-title">Final Fantasy: Math Edition</h3>
+                                        <p class="exam-description">Defeat the algebra monster with your calculation skills!</p>
+                                    </div>
+                                    <div class="exam-time">03:00 PM</div>
+                                </div>
+                                
+                                <div class="exam-action">
+                                    <div class="headphones-icon">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path d="M3 18v-6a9 9 0 0118 0v6m-9-6v6m-9 0h6m6 0h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="exam-item">
+                                <div class="exam-date">
+                                    <div class="exam-day">8</div>
+                                    <div class="exam-month">JUN</div>
+                                </div>
+                                
+                                <div class="exam-info">
+                                    <div class="exam-details">
+                                        <h3 class="exam-title">Pixel Perfect Design</h3>
+                                        <p class="exam-description">Create a masterpiece using only 16 colors</p>
+                                    </div>
+                                    <div class="exam-time">11:00 AM</div>
+                                </div>
+                                
+                                <div class="exam-action">
+                                    <div class="headphones-icon">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path d="M3 18v-6a9 9 0 0118 0v6m-9-6v6m-9 0h6m6 0h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="exam-item completed">
+                                <div class="exam-date completed">
+                                    <div class="exam-day">2</div>
+                                    <div class="exam-month">JUN</div>
+                                </div>
+                                
+                                <div class="exam-info">
+                                    <div class="exam-details">
+                                        <h3 class="exam-title">Story Mode: Creative Writing</h3>
+                                        <p class="exam-description">Craft an epic adventure in 8-bit style</p>
+                                    </div>
+                                    <div class="exam-time">Score: F</div>
+                                </div>
+                                
+                                <div class="exam-action">
+                                    <div class="exam-status">DONE</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="homeworks-content" style="display: none;">
+                            <div class="exam-item">
+                                <div class="exam-date">
+                                    <div class="exam-day">5</div>
+                                    <div class="exam-month">JUN</div>
+                                </div>
+                                
+                                <div class="exam-info">
+                                    <div class="exam-details">
+                                        <h3 class="exam-title">Daily Pixel Sketch</h3>
+                                        <p class="exam-description">Draw a simple character in pixel art style</p>
+                                    </div>
+                                    <div class="exam-time">23:59 PM</div>
+                                </div>
+                                
+                                <div class="exam-action">
+                                    <div class="headphones-icon">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path d="M3 18v-6a9 9 0 0118 0v6m-9-6v6m-9 0h6m6 0h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="exam-item completed">
+                                <div class="exam-date completed">
+                                    <div class="exam-day">4</div>
+                                    <div class="exam-month">JUN</div>
+                                </div>
+                                
+                                <div class="exam-info">
+                                    <div class="exam-details">
+                                        <h3 class="exam-title">Color Theory Practice</h3>
+                                        <p class="exam-description">Create a harmonious palette for a game scene</p>
+                                    </div>
+                                    <div class="exam-time">Score: A</div>
+                                </div>
+                                
+                                <div class="exam-action">
+                                    <div class="exam-status">DONE</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
